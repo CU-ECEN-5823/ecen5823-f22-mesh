@@ -200,7 +200,7 @@ static void set_device_name(bd_addr *addr)
   sl_status_t result;
 
   // Create unique device name using the last two bytes of the Bluetooth address
-  snprintf(name, NAME_BUF_LEN, "cli-pub %02x:%02x", // DOS changed name from "switch node"
+  snprintf(name, NAME_BUF_LEN, "Client-pub %02x:%02x", // DOS changed name from "switch node"
            addr->addr[1], addr->addr[0]);
 
   app_log("Device name: '%s'\r\n", name);
@@ -216,6 +216,7 @@ static void set_device_name(bd_addr *addr)
 
   // Show device name on the LCD
   lcd_print(name, BTMESH_WSTK_LCD_ROW_NAME);
+  lcd_print("A10", BTMESH_WSTK_LCD_ROW_ILLUMINANCE); // DOS
 }
 
 /***************************************************************************//**
@@ -364,8 +365,8 @@ void sl_btmesh_on_event(sl_btmesh_msg_t *evt)
 
 /*
 *       03-12-2022: DOS (Sluiter) modified to set the button state to
-*         APP_BUTTON_PRESS_DURATION_SHORT  == released
-*         APP_BUTTON_PRESS_DURATION_MEDIUM == pressed
+*         APP_BUTTON_RELEASE == released
+*         APP_BUTTON_PRESS   == pressed
 *         See edit in app_button_press.c : sl_button_on_change()
 */
 

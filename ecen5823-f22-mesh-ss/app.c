@@ -141,7 +141,7 @@ static void set_device_name(bd_addr *addr)
   sl_status_t result;
 
   // Create unique device name using the last two bytes of the Bluetooth address
-  snprintf(name, NAME_BUF_LEN, "Ser-sub %02x:%02x", // DOS Server-Subscriber
+  snprintf(name, NAME_BUF_LEN, "Server-sub %02x:%02x", // DOS Server-Subscriber
            addr->addr[1], addr->addr[0]);
 
   app_log("Device name: '%s'\r\n", name);
@@ -156,6 +156,7 @@ static void set_device_name(bd_addr *addr)
   }
   // Show device name on the LCD
   lcd_print(name, BTMESH_WSTK_LCD_ROW_NAME);
+  lcd_print("A10", BTMESH_WSTK_LCD_ROW_ILLUMINANCE); // DOS
 }
 
 /***************************************************************************//**

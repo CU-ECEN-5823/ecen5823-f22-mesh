@@ -116,7 +116,7 @@ void sl_button_on_change(const sl_button_t *handle)
       // Student edits:
       //   Modify this code to set the button state to APP_BUTTON_PRESS when
       //   pressed and to APP_BUTTON_RELEASE when released.
-      //   Do not add the code back in that measures the duration!
+      //   Do not add the code back in that measures the press duration!
 
       if (sl_button_get_state(handle) == SL_SIMPLE_BUTTON_PRESSED) {
 

@@ -185,8 +185,6 @@ void sl_btmesh_lighting_server_on_ui_update(uint16_t lightness_level)
 
 
 
-
-
 } // sl_btmesh_lighting_server_on_ui_update
 
 // -----------------------------------------------------------------------------
