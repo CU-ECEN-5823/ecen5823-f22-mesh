@@ -1,29 +1,24 @@
 # ecen5823-f22-mesh
 
 Author : Dave Sluiter
-Date   : 3/14/2022
+Date   : 3/14/2022, initial file.
+Date   : 4/4/2022, cleaned up the formatting this markdown file.
+
 
 Starter code for the Bluetooth Mesh Assignment based on Gecko SDK 3.2.3
 
 There are 2 Simplicity Studio projects in this repository:
 
-ecen5823-f22-mesh-cp/  - Client-Publisher, this originated as the SiLabs 
-                         soc_btbesh_switch example. The switch example publishes messages  
-                         to a Server-Subscriber. 
+ecen5823-f22-mesh-cp/  - Client-Publisher, this originated as the SiLabs soc_btbesh_switch example. The switch example publishes messages to a Server-Subscriber. 
                          
-ecen5823-f22-mesh-ss/  - Server-Subscriber, this originated as the SiLabs 
-                         soc_btbesh_light example. The example subscribes to messages 
-                         from a Client-Server. 
+ecen5823-f22-mesh-ss/  - Server-Subscriber, this originated as the SiLabs soc_btbesh_light example. The example subscribes to messages from a Client-Server. 
 
 
 ************************************************
 Document soc_btmesh_switch code
 ************************************************
 
-This file documents a portion of the the construction of the SiLabs example 
-project: soc_btmesh_switch which was the basis of this starter code for the
-mesh assignment. Down below are summaries of the changes made to both the soc_btmesh_switch
-and the sc_btmesh_light example code. 
+This file documents a portion of the the construction of the SiLabs example project: soc_btmesh_switch which was the basis of this starter code for the mesh assignment. Down below are summaries of the changes made to both the soc_btmesh_switch and the sc_btmesh_light example code. 
 
 soc_btmesh_switch became ecen5823-f22-mesh-cp   (client-publisher)
 soc_btmesh_light  became ecen5823-f22-mesh-cp   (server-subscriber)
@@ -52,15 +47,13 @@ This component provides a generic button API. In addition, a button driver
 implementation component such as the Simple Button component should be 
 included in the project to implement full button handling.
 
-Also has the API documentation, + links to webpage documentation. Not replicating all
-of that here. Just a few summary notes:
+Also has the API documentation, + links to webpage documentation. Not replicating all of that here. Just a few summary notes:
 
 // ### --------------------------------------------------------------
 
 There is currently one type of button supported by the button driver: Simple Button Driver
 
-Both the interrupt and polling methods obtain the button state for the user by calling 
-sl_button_get_state(). 
+Both the interrupt and polling methods obtain the button state for the user by calling sl_button_get_state(). 
 
 // ### --------------------------------------------------------------
 
@@ -146,8 +139,7 @@ static void GPIOINT_IRQDispatcher(uint32_t iflags)
 }
 
 
-So this is the mechanism by which the application ISRs are handled. Now figure out how
-the addresses of the ISR routines are loaded into gpioCallbacks[32]. This is handled by:
+So this is the mechanism by which the application ISRs are handled. Now figure out how the addresses of the ISR routines are loaded into gpioCallbacks[32]. This is handled by:
 
 // *************************************************************************
 void GPIOINT_CallbackRegister(uint8_t intNo, GPIOINT_IrqCallbackPtr_t callbackPtr)
@@ -394,9 +386,7 @@ void sl_button_on_change(const sl_button_t *handle)
 
 
 
-There is other code that looks at the buttons[i].state values above that results in 
-calling the callback app_button_press_cb() in app.c, which calls 
-sl_btmesh_change_switch_position() 
+There is other code that looks at the buttons[i].state values above that results in calling the callback app_button_press_cb() in app.c, which calls sl_btmesh_change_switch_position() 
 
 
 
@@ -587,8 +577,7 @@ static void send_onoff_request(uint8_t retrans)
 } // send_onoff_request()
 
 
-mesh_lib_generic_client_publish() is the method (function) that clients uses to publish 
-a generic on/off message. 
+mesh_lib_generic_client_publish() is the method (function) that clients uses to publish a generic on/off message. 
 
 
 
@@ -597,15 +586,13 @@ a generic on/off message.
 Summary of modifications to create the client-publisher starter code 
 ************************************************************************
 
-All of the models remain. Some functionality from the example code has been disabled or
-modified.
+All of the models remain. Some functionality from the example code has been disabled or modified.
 
 files = gecko_sdk_3.2.3/app/common/util/app_button_press/app_button_press.c 
         gecko_sdk_3.2.3/app/common/util/app_button_press/app_button_press.h
 See my initials: DOS and "Student Edits".
 
-Changed sl_button_on_change() to set "pressed" and "released" states.
-Removed/disabled the measurement of button press code.
+Changed sl_button_on_change() to set "pressed" and "released" states. Removed/disabled the measurement of button press code.
 
 
 file = app.c 
@@ -622,8 +609,7 @@ Changed device from "switch node" to "cli-pub" for client-publisher
 Summary of modifications to create the server-sub-scriber starter code 
 ************************************************************************
 
-All of the models remain. Some functionality from the example code has been disabled or
-modified.
+All of the models remain. Some functionality from the example code has been disabled or modified.
 
 
 file = app.c 
@@ -635,11 +621,9 @@ Changed device from "light node" to "ser-sub" for server-subscriber
 file = app_out_lcd.c 
 See my initials: DOS and "Student Edits".
 
-Commented out functionality for sl_btmesh_ctl_on_ui_update(). The CTL models are still
-there in the publisher, they just can't send any messages.
+Commented out functionality for sl_btmesh_ctl_on_ui_update(). The CTL models are still there in the publisher, they just can't send any messages.
 
-Modified sl_btmesh_lighting_server_on_ui_update() to have students convert the
-lightness level into "Button Pressed" and "Button Released" messages on the LCD.
+Modified sl_btmesh_lighting_server_on_ui_update() to have students convert the lightness level into "Button Pressed" and "Button Released" messages on the LCD.
 
 Left the control of the LEDs the unmodified.
 
