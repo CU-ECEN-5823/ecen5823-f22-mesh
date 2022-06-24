@@ -154,6 +154,9 @@ void sl_btmesh_ctl_on_ui_update(uint16_t temperature,
  ******************************************************************************/
 void sl_btmesh_lighting_server_on_ui_update(uint16_t lightness_level)
 {
+  // Students: Compiling this starter code without any edits will result in unused variable
+  // compiler warnings.
+  
   // Temporary buffer to format the LCD output text
   char tmp_str[LCD_ROW_LEN];
   //DOS uint16_t lightness_percent = (lightness_level * 100 + 99) / 65535;
