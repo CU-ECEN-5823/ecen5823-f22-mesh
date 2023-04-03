@@ -5,6 +5,8 @@
 *.o
 # dont ignore this file
 !binapploader.o
+# dont ignore this file
+!binapploader_nvm3.o
 *.ko
 *.obj
 *.elf
@@ -27,6 +29,7 @@
 # dont ignore these files
 !libpsstore.a
 !libbluetooth.a
+!libbluetooth_mesh.a
 !libmbedtls.a
 !librail_efr32xg13_gcc_release.a
 *.la
